@@ -24,7 +24,7 @@ bun run bin/final.ts > ./tmp/neardata_output.txt 2>&1 && echo "SUCCESS"
 # stream
 source .env
 bun run bin/stream.ts
-bun run bin/stream.ts > ./tmp/stream_output.txt 2>&1 && echo "CHECK TEST"
+bun run bin/stream.ts > ./tmp/stream_output.txt 2>&1 && echo "CHECK TEST OUTPUT FILE"
 ```
 
 ---
