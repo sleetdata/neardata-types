@@ -36,16 +36,19 @@ export const neardata_transactions_transaction_interface_z_const = z.object({
 // ==============================================
 // ========= neardata_action_interface =========
 
-export const neardata_action_interface_z_const = z
-  .object({
-    CreateAccount: z.union([z.object({}), z.literal("CreateAccount")]).optional(),
-    DeleteAccount: z.union([neardata_delete_account_action_interface_z_const, z.literal("DeleteAccount")]).optional(),
+// Helper schema for actions that can be either an object or a string
+export const neardata_action_interface_z_const = z.union([
+  z.literal("CreateAccount"),
+  z.literal("DeleteAccount"),
+  z.object({
+    CreateAccount: z.object({}).optional(),
+    DeleteAccount: neardata_delete_account_action_interface_z_const.optional(),
     AddKey: neardata_add_key_action_interface_z_const.optional(),
     FunctionCall: neardata_function_call_action_interface_z_const.optional(),
     Transfer: neardata_transfer_action_interface_z_const.optional(),
     Delegate: neardata_delegate_action_interface_z_const.optional(),
-  })
-  .catchall(z.union([z.string(), z.any()])) satisfies z.ZodType<neardata_action_interface>;
+  }).catchall(z.any()),
+]) satisfies z.ZodType<neardata_action_interface>;
 
 // ==============================================
 // copyright 2025 by sleet.near

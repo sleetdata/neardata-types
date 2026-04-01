@@ -30,17 +30,21 @@ export interface neardata_transactions_transaction_interface {
 // ==============================================
 // ========= neardata_action_interface =========
 
-export interface neardata_action_interface {
-  CreateAccount?: {} | "CreateAccount"; // no fields, can be empty object or string
-  DeleteAccount?: neardata_delete_account_action_interface | "DeleteAccount";
-  AddKey?: neardata_add_key_action_interface;
-  FunctionCall?: neardata_function_call_action_interface;
-  Transfer?: neardata_transfer_action_interface;
-  Delegate?: neardata_delegate_action_interface;
-
-  // Fallback: allow any other action key with any payload
-  [actionName: string]: unknown;
-}
+// Actions can be represented as either:
+// - A string for actions with no fields (e.g., "CreateAccount", "DeleteAccount")
+// - An object with the action type as key (e.g., { CreateAccount: {} })
+export type neardata_action_interface =
+  | "CreateAccount"
+  | "DeleteAccount"
+  | {
+      CreateAccount?: {};
+      DeleteAccount?: neardata_delete_account_action_interface;
+      AddKey?: neardata_add_key_action_interface;
+      FunctionCall?: neardata_function_call_action_interface;
+      Transfer?: neardata_transfer_action_interface;
+      Delegate?: neardata_delegate_action_interface;
+      [actionName: string]: unknown;
+    };
 
 // ==============================================
 // copyright 2025 by sleet.near
