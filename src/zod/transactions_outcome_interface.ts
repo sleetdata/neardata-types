@@ -61,7 +61,7 @@ export const neardata_outcome_metadata_interface_Z_CONST = z.object({
 
 // Optional gas profile entries
 export const neardata_gas_profile_entry_interface_Z_CONST = z.object({
-  cost: z.number(),
+  cost: z.string(),
   cost_category: z.string(),
   description: z.string().optional(),
 }) satisfies z.ZodType<neardata_gas_profile_entry_interface>;

@@ -45,7 +45,7 @@ export interface neardata_outcome_metadata_interface {
 
 // Optional gas profile entries (often null). Included for completeness.
 export interface neardata_gas_profile_entry_interface {
-  cost: number; // cost amount for the item
+  cost: string; // cost amount for the item (as string to preserve precision)
   cost_category: string; // e.g. "WASM", "Host", etc.
   description?: string; // human-readable description
 }

@@ -16,6 +16,7 @@ bin
 ```sh
 # test that fnal block matches type
 bun run bin/final.ts
+bun run bin/final.ts > /tmp/neardata_output.txt
 ```
 
 ---

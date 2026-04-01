@@ -30,7 +30,7 @@ export interface neardata_shard_chunk_interface {
     height_included: number;
     shard_id: number;
     gas_used: number;
-    gas_limit: string;
+    gas_limit: number;
     rent_paid: string;
     validator_reward: string;
     balance_burnt: string;

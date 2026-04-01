@@ -37,7 +37,7 @@ export const neardata_shard_chunk_interface_Z_CONST = z.object({
     height_included: z.number(),
     shard_id: z.number(),
     gas_used: z.number(),
-    gas_limit: z.string(),
+    gas_limit: z.number(),
     rent_paid: z.string(),
     validator_reward: z.string(),
     balance_burnt: z.string(),
