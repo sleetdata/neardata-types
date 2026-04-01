@@ -4,9 +4,7 @@ import { EventSource } from "eventsource";
 // NEAR Stream SSE Client
 // Connects to a near-stream server and validates blocks using neardata-types
 // ===========================================
-
 const NEAR_STREAM_URL = Bun.env.NEAR_STREAM_URL || "http://localhost:8080";
-
 // ===========================================
 async function stream_blocks(): Promise<void> {
   return new Promise((resolve, reject) => {
@@ -54,6 +52,6 @@ async function stream_blocks(): Promise<void> {
     };
   });
 }
-
+// ===========================================
 // ===========================================
 await stream_blocks();
