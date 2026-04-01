@@ -1,5 +1,8 @@
 import type { neardata_transactions_interface } from "./transactions";
-import type { neardata_receipt_interface, neardata_receipt_execution_outcome_interface } from "./receipts";
+import type {
+  neardata_receipt_interface,
+  neardata_receipt_execution_outcome_interface,
+} from "./receipts";
 
 // ==================================
 // ==== neardata_shard_interface ====
@@ -10,7 +13,6 @@ export interface neardata_shard_interface {
   receipt_execution_outcomes: neardata_receipt_execution_outcome_interface[];
   state_changes: any[];
 }
-
 
 // ========================================
 // ==== neardata_shard_chunk_interface ====

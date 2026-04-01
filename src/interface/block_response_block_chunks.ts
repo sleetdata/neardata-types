@@ -24,6 +24,5 @@ export interface neardata_block_chunks_interface {
   signature: string;
 }
 
-
 // ==============================================
 // copyright 2025 by sleet.near

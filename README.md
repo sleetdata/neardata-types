@@ -1,4 +1,5 @@
 # neardata-types
+
 types for neardata
 
 🚧 WIP
@@ -11,11 +12,14 @@ types for neardata
 
 ---
 
-
 develop and publish this package
+
 ```bash
 bun install
 # bun run index.ts
+bun run tsc --noEmit
+bunx prettier . --write
+# publish
 bun publish --dry-run
 bunx npm login
 bun publish --access public
@@ -25,10 +29,7 @@ bun publish --access public
 
 ## HOW TO USE
 
-
-
 ---
-
 
 This project was created using `bun init` in bun v1.3.11. [Bun](https://bun.com) is a fast all-in-one JavaScript runtime.
 

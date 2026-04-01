@@ -21,7 +21,6 @@ export interface neardata_delegate_action_inner_action_interface {
 // =================================================
 // ====== neardata_delegate_action_interface =======
 
-
 export interface neardata_delegate_action_interface {
   delegate_action: {
     sender_id: string;
@@ -33,7 +32,6 @@ export interface neardata_delegate_action_interface {
   };
   signature: string;
 }
-
 
 // ==============================================
 // copyright 2025 by sleet.near

@@ -25,7 +25,6 @@ export interface neardata_merkle_proof_node_interface {
   direction: "Left" | "Right";
 }
 
-
 // Inner outcome payload
 // the log feild is imortant and can have event standard logs.
 export interface neardata_outcome_interface {
@@ -57,10 +56,6 @@ export type neardata_outcome_status_interface =
   | { SuccessReceiptId: string } // receipt ID created by this outcome
   | { Failure: Record<string, unknown> }; // error object, shape varies
 
-  
-  
-  
-  
 // ===================================================
 // Receipt placeholder (your sample shows null). If you later need details,
 // replace this with the actual receipt shape.
