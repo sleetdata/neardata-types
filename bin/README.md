@@ -9,7 +9,7 @@ neardata
 - https://mainnet.neardata.xyz/
 - https://testnet.neardata.xyz/
 
-the stream bin depends on "https://github.com/sleetdata/near-stream"
+the stream bin depends on "https://github.com/sleetdata/near-stream", must set up your own near-stream, and set env "NEAR_STREAM_URL"
 
 ---
 
