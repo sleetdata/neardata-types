@@ -38,14 +38,14 @@ export const neardata_transactions_transaction_interface_z_const = z.object({
 
 export const neardata_action_interface_z_const = z
   .object({
-    CreateAccount: z.record(z.string(), z.any()).optional(),
-    DeleteAccount: neardata_delete_account_action_interface_z_const.optional(),
+    CreateAccount: z.union([z.object({}), z.literal("CreateAccount")]).optional(),
+    DeleteAccount: z.union([neardata_delete_account_action_interface_z_const, z.literal("DeleteAccount")]).optional(),
     AddKey: neardata_add_key_action_interface_z_const.optional(),
     FunctionCall: neardata_function_call_action_interface_z_const.optional(),
     Transfer: neardata_transfer_action_interface_z_const.optional(),
     Delegate: neardata_delegate_action_interface_z_const.optional(),
   })
-  .catchall(z.any()) satisfies z.ZodType<neardata_action_interface>;
+  .catchall(z.union([z.string(), z.any()])) satisfies z.ZodType<neardata_action_interface>;
 
 // ==============================================
 // copyright 2025 by sleet.near

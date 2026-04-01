@@ -31,8 +31,8 @@ export interface neardata_transactions_transaction_interface {
 // ========= neardata_action_interface =========
 
 export interface neardata_action_interface {
-  CreateAccount?: {}; // no fields
-  DeleteAccount?: neardata_delete_account_action_interface;
+  CreateAccount?: {} | "CreateAccount"; // no fields, can be empty object or string
+  DeleteAccount?: neardata_delete_account_action_interface | "DeleteAccount";
   AddKey?: neardata_add_key_action_interface;
   FunctionCall?: neardata_function_call_action_interface;
   Transfer?: neardata_transfer_action_interface;
