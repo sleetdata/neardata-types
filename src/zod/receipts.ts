@@ -57,7 +57,7 @@ export const neardata_data_receiver_interface_z_const = z.object({
 
 export const neardata_data_receipt_interface_z_const = z.object({
   data_id: z.string(),
-  data: z.string(),
+  data: z.string().nullable(),
   is_promise_resume: z.boolean(),
 }) satisfies z.ZodType<neardata_data_receipt_interface>;
 

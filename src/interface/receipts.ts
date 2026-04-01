@@ -47,7 +47,7 @@ export interface neardata_data_receiver_interface {
 
 export interface neardata_data_receipt_interface {
   data_id: string;
-  data: string; // base64 encoded data
+  data: string | null; // base64 encoded data, can be null
   is_promise_resume: boolean;
 }
 
