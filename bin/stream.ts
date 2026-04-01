@@ -35,8 +35,8 @@ async function stream_blocks(): Promise<void> {
         console.error("✗ VALIDATION FAILED - Stopping stream");
         console.error("===========================================");
         console.error(err);
-        console.error("\n=== RAW DATA FOR TYPE ANALYSIS ===");
-        console.log(event.data);
+        // console.error("\n=== RAW DATA FOR TYPE ANALYSIS ===");
+        // console.log(event.data);
         console.error("\n===========================================");
         es.close();
         reject(err);

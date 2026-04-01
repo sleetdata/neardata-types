@@ -25,7 +25,6 @@ bun run bin/final.ts > ./tmp/neardata_output.txt 2>&1 && echo "SUCCESS"
 source .env
 bun run bin/stream.ts
 bun run bin/stream.ts > ./tmp/stream_output.txt 2>&1 && echo "CHECK TEST OUTPUT FILE"
-bun run bin/stream.ts > ./tmp/stream_output2.txt 2>&1 && echo "CHECK TEST OUTPUT FILE"
 gtimeout 15s bun run bin/stream.ts > ./tmp/stream_output.txt 2>&1 && echo "CHECK TEST OUTPUT FILE"
 ```
 
