@@ -8,11 +8,13 @@ export interface neardata_block_response_interface {
   shards: neardata_shard_interface[];
 }
 // ===========================================
+// ===========================================
 export interface neardata_block_interface {
   author: string;
   header: neardata_block_header_interface;
   chunks: neardata_block_chunks_interface[];
 }
+// ===========================================
 export interface neardata_block_header_interface {
   height: number;
   prev_height: number;

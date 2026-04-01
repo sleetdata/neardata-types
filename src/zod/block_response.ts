@@ -6,21 +6,20 @@ import type {
 } from "../interface/block_response";
 import { neardata_block_chunks_interface_Z_CONST } from "./block_response_block_chunks";
 import { neardata_shard_interface_Z_CONST } from "./block_response_shards";
-
 // ===========================================
 // ==== neardata_block_response_interface ====
 export const neardata_block_response_interface_Z_CONST = z.object({
   block: z.lazy(() => neardata_block_interface_Z_CONST),
   shards: z.array(neardata_shard_interface_Z_CONST),
 }) satisfies z.ZodType<neardata_block_response_interface>;
-
+// ===========================================
 // ===========================================
 export const neardata_block_interface_Z_CONST = z.object({
   author: z.string(),
   header: z.lazy(() => neardata_block_header_interface_Z_CONST),
   chunks: z.array(neardata_block_chunks_interface_Z_CONST),
 }) satisfies z.ZodType<neardata_block_interface>;
-
+// ===========================================
 export const neardata_block_header_interface_Z_CONST = z.object({
   height: z.number(),
   prev_height: z.number(),
@@ -57,6 +56,5 @@ export const neardata_block_header_interface_Z_CONST = z.object({
   latest_protocol_version: z.number(),
   chunk_endorsements: z.array(z.array(z.number())),
 }) satisfies z.ZodType<neardata_block_header_interface>;
-
 // ==============================================
 // copyright 2025 by sleet.near
