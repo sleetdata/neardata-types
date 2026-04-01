@@ -10,6 +10,7 @@ async function stream_blocks(): Promise<void> {
   return new Promise((resolve, reject) => {
     console.log("===========================================");
     console.log(`Connecting to NEAR Stream: ${NEAR_STREAM_URL}`);
+    console.log("Stops on first validation error");
     console.log("===========================================");
 
     const es = new EventSource(NEAR_STREAM_URL);
@@ -30,15 +31,20 @@ async function stream_blocks(): Promise<void> {
         console.log(`  Shards: ${validated.shards.length}`);
         console.log("===========================================");
       } catch (err) {
-        console.error("✗ Validation failed:");
+        console.error("\n===========================================");
+        console.error("✗ VALIDATION FAILED - Stopping stream");
+        console.error("===========================================");
         console.error(err);
-        console.log("\n=== RAW DATA ===");
+        console.error("\n=== RAW DATA FOR TYPE ANALYSIS ===");
         console.log(event.data);
+        console.error("\n===========================================");
+        es.close();
+        reject(err);
       }
     });
 
     es.addEventListener("ping", () => {
-      console.log("♥ Ping received");
+      console.log("♥ Ping");
     });
 
     es.onerror = (err) => {
