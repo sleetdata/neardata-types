@@ -5,6 +5,7 @@ import type {
   neardata_action_receipt_interface,
   neardata_data_receipt_interface,
   neardata_receipt_execution_outcome_interface,
+  neardata_data_receiver_interface,
 } from "../interface/receipts";
 import { neardata_action_interface_Z_CONST } from "./transactions";
 import { neardata_execution_outcome_interface_Z_CONST } from "./transactions_outcome_interface";
@@ -35,11 +36,19 @@ export const neardata_action_receipt_interface_Z_CONST = z.object({
   signer_id: z.string(),
   signer_public_key: z.string(),
   gas_price: z.string(),
-  output_data_receivers: z.array(z.any()),
+  output_data_receivers: z.array(z.lazy(() => neardata_data_receiver_interface_Z_CONST)),
   input_data_ids: z.array(z.string()),
   actions: z.array(neardata_action_interface_Z_CONST),
   is_promise_yield: z.boolean(),
 }) satisfies z.ZodType<neardata_action_receipt_interface>;
+
+// ========================================
+// ==== neardata_data_receiver_interface ====
+
+export const neardata_data_receiver_interface_Z_CONST = z.object({
+  data_id: z.string(),
+  receiver_id: z.string(),
+}) satisfies z.ZodType<neardata_data_receiver_interface>;
 
 // ========================================
 // ==== neardata_data_receipt_interface ====

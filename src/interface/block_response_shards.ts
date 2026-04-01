@@ -11,7 +11,28 @@ export interface neardata_shard_interface {
   shard_id: number;
   chunk: neardata_shard_chunk_interface;
   receipt_execution_outcomes: neardata_receipt_execution_outcome_interface[];
-  state_changes: any[];
+  state_changes: neardata_state_change_interface[];
+}
+
+// ========================================
+// ==== neardata_state_change_interface ====
+
+export interface neardata_state_change_interface {
+  cause: {
+    receipt_hash?: string;
+    transaction_hash?: string;
+    type: string;
+  };
+  change: {
+    account_id?: string;
+    amount?: string;
+    code_hash?: string;
+    locked?: string;
+    storage_paid_at?: number;
+    storage_usage?: number;
+    [key: string]: unknown;
+  };
+  type: string;
 }
 
 // ========================================
@@ -52,6 +73,7 @@ export interface neardata_shard_chunk_interface {
   };
   transactions: neardata_transactions_interface[];
   receipts: neardata_receipt_interface[];
+  local_receipts: any[];
 }
 
 // ==============================================

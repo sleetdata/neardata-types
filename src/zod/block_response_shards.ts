@@ -2,6 +2,7 @@ import { z } from "zod";
 import type {
   neardata_shard_interface,
   neardata_shard_chunk_interface,
+  neardata_state_change_interface,
 } from "../interface/block_response_shards";
 import { neardata_transactions_interface_Z_CONST } from "./transactions";
 import {
@@ -18,8 +19,28 @@ export const neardata_shard_interface_Z_CONST = z.object({
   receipt_execution_outcomes: z.array(
     neardata_receipt_execution_outcome_interface_Z_CONST,
   ),
-  state_changes: z.array(z.any()),
+  state_changes: z.array(z.lazy(() => neardata_state_change_interface_Z_CONST)),
 }) satisfies z.ZodType<neardata_shard_interface>;
+
+// ========================================
+// ==== neardata_state_change_interface ====
+
+export const neardata_state_change_interface_Z_CONST = z.object({
+  cause: z.object({
+    receipt_hash: z.string().optional(),
+    transaction_hash: z.string().optional(),
+    type: z.string(),
+  }),
+  change: z.object({
+    account_id: z.string().optional(),
+    amount: z.string().optional(),
+    code_hash: z.string().optional(),
+    locked: z.string().optional(),
+    storage_paid_at: z.number().optional(),
+    storage_usage: z.number().optional(),
+  }).catchall(z.unknown()),
+  type: z.string(),
+}) satisfies z.ZodType<neardata_state_change_interface>;
 
 // ========================================
 // ==== neardata_shard_chunk_interface ====
@@ -59,6 +80,7 @@ export const neardata_shard_chunk_interface_Z_CONST = z.object({
   }),
   transactions: z.array(neardata_transactions_interface_Z_CONST),
   receipts: z.array(neardata_receipt_interface_Z_CONST),
+  local_receipts: z.array(z.any()),
 }) satisfies z.ZodType<neardata_shard_chunk_interface>;
 
 // ==============================================

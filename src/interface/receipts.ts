@@ -28,10 +28,18 @@ export interface neardata_action_receipt_interface {
   signer_id: string;
   signer_public_key: string;
   gas_price: string;
-  output_data_receivers: any[]; // Could be more specific if needed
-  input_data_ids: string[]; // Array of data IDs
+  output_data_receivers: neardata_data_receiver_interface[];
+  input_data_ids: string[];
   actions: neardata_action_interface[];
   is_promise_yield: boolean;
+}
+
+// ========================================
+// ==== neardata_data_receiver_interface ====
+
+export interface neardata_data_receiver_interface {
+  data_id: string;
+  receiver_id: string;
 }
 
 // ========================================
