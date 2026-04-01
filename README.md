@@ -1,6 +1,8 @@
 # neardata-types
 types for neardata
 
+🚧 WIP
+
 ℹ️ these types where written for internal use by sleet.near
 <br/>
 ℹ️ works for and tested with fastnear neardata
