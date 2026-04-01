@@ -4,7 +4,7 @@ import type { neardata_block_chunks_interface } from "../interface/block_respons
 // ===========================================
 // ==== neardata_block_chunks_interface ====
 
-export const neardata_block_chunks_interface_Z_CONST = z.object({
+export const neardata_block_chunks_interface_z_const = z.object({
   chunk_hash: z.string(),
   prev_block_hash: z.string(),
   outcome_root: z.string(),

@@ -4,28 +4,28 @@ import type {
   neardata_shard_chunk_interface,
   neardata_state_change_interface,
 } from "../interface/block_response_shards";
-import { neardata_transactions_interface_Z_CONST } from "./transactions";
+import { neardata_transactions_interface_z_const } from "./transactions";
 import {
-  neardata_receipt_interface_Z_CONST,
-  neardata_receipt_execution_outcome_interface_Z_CONST,
+  neardata_receipt_interface_z_const,
+  neardata_receipt_execution_outcome_interface_z_const,
 } from "./receipts";
 
 // ==================================
 // ==== neardata_shard_interface ====
 
-export const neardata_shard_interface_Z_CONST = z.object({
+export const neardata_shard_interface_z_const = z.object({
   shard_id: z.number(),
-  chunk: z.lazy(() => neardata_shard_chunk_interface_Z_CONST),
+  chunk: z.lazy(() => neardata_shard_chunk_interface_z_const),
   receipt_execution_outcomes: z.array(
-    neardata_receipt_execution_outcome_interface_Z_CONST,
+    neardata_receipt_execution_outcome_interface_z_const,
   ),
-  state_changes: z.array(z.lazy(() => neardata_state_change_interface_Z_CONST)),
+  state_changes: z.array(z.lazy(() => neardata_state_change_interface_z_const)),
 }) satisfies z.ZodType<neardata_shard_interface>;
 
 // ========================================
 // ==== neardata_state_change_interface ====
 
-export const neardata_state_change_interface_Z_CONST = z.object({
+export const neardata_state_change_interface_z_const = z.object({
   cause: z.object({
     receipt_hash: z.string().optional(),
     transaction_hash: z.string().optional(),
@@ -45,7 +45,7 @@ export const neardata_state_change_interface_Z_CONST = z.object({
 // ========================================
 // ==== neardata_shard_chunk_interface ====
 
-export const neardata_shard_chunk_interface_Z_CONST = z.object({
+export const neardata_shard_chunk_interface_z_const = z.object({
   author: z.string(),
   header: z.object({
     chunk_hash: z.string(),
@@ -78,8 +78,8 @@ export const neardata_shard_chunk_interface_Z_CONST = z.object({
     }),
     signature: z.string(),
   }),
-  transactions: z.array(neardata_transactions_interface_Z_CONST),
-  receipts: z.array(neardata_receipt_interface_Z_CONST),
+  transactions: z.array(neardata_transactions_interface_z_const),
+  receipts: z.array(neardata_receipt_interface_z_const),
   local_receipts: z.array(z.any()),
 }) satisfies z.ZodType<neardata_shard_chunk_interface>;
 

@@ -4,7 +4,7 @@ import type { neardata_transfer_action_interface } from "../interface/transactio
 // ======================================================
 // ========= neardata_transfer_action_interface =========
 
-export const neardata_transfer_action_interface_Z_CONST = z.object({
+export const neardata_transfer_action_interface_z_const = z.object({
   deposit: z.string(),
 }) satisfies z.ZodType<neardata_transfer_action_interface>;
 

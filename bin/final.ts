@@ -1,4 +1,4 @@
-import { neardata_block_response_interface_Z_CONST } from "../src/index";
+import { neardata_block_response_interface_z_const } from "../src/index";
 // ===========================================
 const NEARDATA_URL = "https://mainnet.neardata.xyz/v0/last_block/final";
 // ===========================================
@@ -11,7 +11,7 @@ async function validate_final_block() {
   const json = await res.json();
 
   // Validate and parse
-  const validated = neardata_block_response_interface_Z_CONST.parse(json);
+  const validated = neardata_block_response_interface_z_const.parse(json);
 
   console.log("===========================================");
   console.log("✓ Validation successful!");

@@ -10,7 +10,7 @@ export type * from "./block_response_shards.ts";
 export type * from "./receipts.ts";
 // transactions
 export type * from "./transactions.ts";
-export type * from "./transaction_actions_AddKey.ts";
+export type * from "./transactions_actions_AddKey.ts";
 export type * from "./transactions_actions_CreateAccount.ts";
 export type * from "./transactions_actions_Delegate.ts";
 export type * from "./transactions_actions_DeleteAccount.ts";

@@ -4,23 +4,23 @@ import type {
   neardata_block_interface,
   neardata_block_header_interface,
 } from "../interface/block_response";
-import { neardata_block_chunks_interface_Z_CONST } from "./block_response_block_chunks";
-import { neardata_shard_interface_Z_CONST } from "./block_response_shards";
+import { neardata_block_chunks_interface_z_const } from "./block_response_block_chunks";
+import { neardata_shard_interface_z_const } from "./block_response_shards";
 // ===========================================
 // ==== neardata_block_response_interface ====
-export const neardata_block_response_interface_Z_CONST = z.object({
-  block: z.lazy(() => neardata_block_interface_Z_CONST),
-  shards: z.array(neardata_shard_interface_Z_CONST),
+export const neardata_block_response_interface_z_const = z.object({
+  block: z.lazy(() => neardata_block_interface_z_const),
+  shards: z.array(neardata_shard_interface_z_const),
 }) satisfies z.ZodType<neardata_block_response_interface>;
 // ===========================================
 // ===========================================
-export const neardata_block_interface_Z_CONST = z.object({
+export const neardata_block_interface_z_const = z.object({
   author: z.string(),
-  header: z.lazy(() => neardata_block_header_interface_Z_CONST),
-  chunks: z.array(neardata_block_chunks_interface_Z_CONST),
+  header: z.lazy(() => neardata_block_header_interface_z_const),
+  chunks: z.array(neardata_block_chunks_interface_z_const),
 }) satisfies z.ZodType<neardata_block_interface>;
 // ===========================================
-export const neardata_block_header_interface_Z_CONST = z.object({
+export const neardata_block_header_interface_z_const = z.object({
   height: z.number(),
   prev_height: z.number(),
   epoch_id: z.string(),

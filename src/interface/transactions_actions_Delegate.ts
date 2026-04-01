@@ -1,7 +1,7 @@
 import type { neardata_function_call_action_interface } from "./transactions_actions_FunctionCall";
 import type { neardata_transfer_action_interface } from "./transactions_actions_Transfer";
 import type { neardata_create_account_action_interface } from "./transactions_actions_CreateAccount";
-import type { neardata_add_key_action_interface } from "./transaction_actions_AddKey";
+import type { neardata_add_key_action_interface } from "./transactions_actions_AddKey";
 
 // =================================================
 // ====== neardata_delegate_action_inner_action_interface =======

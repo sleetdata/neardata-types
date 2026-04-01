@@ -4,7 +4,7 @@ import type { neardata_delete_account_action_interface } from "../interface/tran
 // ======================================================
 // ====== neardata_delete_account_action_interface =======
 
-export const neardata_delete_account_action_interface_Z_CONST = z.object({
+export const neardata_delete_account_action_interface_z_const = z.object({
   beneficiary_id: z.string(),
 }) satisfies z.ZodType<neardata_delete_account_action_interface>;
 

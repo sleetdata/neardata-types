@@ -1,10 +1,10 @@
 import { z } from "zod";
-import type { neardata_add_key_action_interface } from "../interface/transaction_actions_AddKey";
+import type { neardata_add_key_action_interface } from "../interface/transactions_actions_AddKey";
 
 // ======================================================
 // ====== neardata_add_key_action_interface =======
 
-export const neardata_add_key_action_interface_Z_CONST = z.object({
+export const neardata_add_key_action_interface_z_const = z.object({
   public_key: z.string(),
   access_key: z.object({
     nonce: z.number(),

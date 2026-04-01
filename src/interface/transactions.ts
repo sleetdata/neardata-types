@@ -5,7 +5,7 @@ import type { neardata_transactions_outcome_interface } from "./transactions_out
 import type { neardata_function_call_action_interface } from "./transactions_actions_FunctionCall";
 import type { neardata_transfer_action_interface } from "./transactions_actions_Transfer";
 import type { neardata_delegate_action_interface } from "./transactions_actions_Delegate";
-import type { neardata_add_key_action_interface } from "./transaction_actions_AddKey";
+import type { neardata_add_key_action_interface } from "./transactions_actions_AddKey";
 import type { neardata_delete_account_action_interface } from "./transactions_actions_DeleteAccount";
 
 // ==============================================

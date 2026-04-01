@@ -4,7 +4,7 @@ import type { neardata_function_call_action_interface } from "../interface/trans
 // ======================================================
 // ====== neardata_function_call_action_interface =======
 
-export const neardata_function_call_action_interface_Z_CONST = z.object({
+export const neardata_function_call_action_interface_z_const = z.object({
   method_name: z.string(),
   args: z.string(),
   gas: z.number(),

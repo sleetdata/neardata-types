@@ -10,7 +10,7 @@ export * from "./block_response_shards.ts";
 export * from "./receipts.ts";
 // transactions
 export * from "./transactions.ts";
-export * from "./transaction_actions_AddKey.ts";
+export * from "./transactions_actions_AddKey.ts";
 export * from "./transactions_actions_CreateAccount.ts";
 export * from "./transactions_actions_Delegate.ts";
 export * from "./transactions_actions_DeleteAccount.ts";
