@@ -31,14 +31,16 @@ export const neardata_state_change_interface_z_const = z.object({
     transaction_hash: z.string().optional(),
     type: z.string(),
   }),
-  change: z.object({
-    account_id: z.string().optional(),
-    amount: z.string().optional(),
-    code_hash: z.string().optional(),
-    locked: z.string().optional(),
-    storage_paid_at: z.number().optional(),
-    storage_usage: z.number().optional(),
-  }).catchall(z.unknown()),
+  change: z
+    .object({
+      account_id: z.string().optional(),
+      amount: z.string().optional(),
+      code_hash: z.string().optional(),
+      locked: z.string().optional(),
+      storage_paid_at: z.number().optional(),
+      storage_usage: z.number().optional(),
+    })
+    .catchall(z.unknown()),
   type: z.string(),
 }) satisfies z.ZodType<neardata_state_change_interface>;
 

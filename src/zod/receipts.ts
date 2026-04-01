@@ -36,7 +36,9 @@ export const neardata_action_receipt_interface_z_const = z.object({
   signer_id: z.string(),
   signer_public_key: z.string(),
   gas_price: z.string(),
-  output_data_receivers: z.array(z.lazy(() => neardata_data_receiver_interface_z_const)),
+  output_data_receivers: z.array(
+    z.lazy(() => neardata_data_receiver_interface_z_const),
+  ),
   input_data_ids: z.array(z.string()),
   actions: z.array(neardata_action_interface_z_const),
   is_promise_yield: z.boolean(),

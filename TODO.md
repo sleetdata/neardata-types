@@ -1,9 +1,9 @@
 # TO DO
+
 human to do list
 
 - [ ] make more agent friendly
-- [ ] 
-
+- [ ]
 
 ---
 
