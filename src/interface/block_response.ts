@@ -3,20 +3,16 @@ import type { neardata_block_chunks_interface } from "./block_response_block_chu
 import type { neardata_shard_interface } from "./block_response_shards";
 // ===========================================
 // ==== neardata_block_response_interface ====
-
 export interface neardata_block_response_interface {
   block: neardata_block_interface;
   shards: neardata_shard_interface[];
 }
-
 // ===========================================
-
 export interface neardata_block_interface {
   author: string;
   header: neardata_block_header_interface;
   chunks: neardata_block_chunks_interface[];
 }
-
 export interface neardata_block_header_interface {
   height: number;
   prev_height: number;
@@ -53,7 +49,5 @@ export interface neardata_block_header_interface {
   latest_protocol_version: number;
   chunk_endorsements: number[][];
 }
-
-
 // ==============================================
 // copyright 2025 by sleet.near
