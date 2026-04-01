@@ -1,58 +1,59 @@
-import { neardata_block_response_interface_z_const } from "../src/index";
+import { neardata_block_response_interface_z_const } from "../src/index.ts";
+import { EventSource } from "eventsource";
 // ===========================================
-const STREAM_URL = process.env.NEAR_STREAM_URL ?? "";
-console.log("Connecting to:", STREAM_URL);
+// NEAR Stream SSE Client
+// Connects to a near-stream server and validates blocks using neardata-types
 // ===========================================
-export async function streamBlocks() {
-  const res = await fetch(STREAM_URL, {
-    headers: {
-      Accept: "text/event-stream",
-    },
-  });
 
-  if (!res.ok || !res.body) {
-    throw new Error(`Failed to connect: ${res.status}`);
-  }
+const NEAR_STREAM_URL = Bun.env.NEAR_STREAM_URL || "http://localhost:8080";
 
-  const reader = res.body.getReader();
-  const decoder = new TextDecoder();
+// ===========================================
+async function stream_blocks(): Promise<void> {
+  return new Promise((resolve, reject) => {
+    console.log("===========================================");
+    console.log(`Connecting to NEAR Stream: ${NEAR_STREAM_URL}`);
+    console.log("===========================================");
 
-  let buffer = "";
+    const es = new EventSource(NEAR_STREAM_URL);
 
-  while (true) {
-    const { value, done } = await reader.read();
-    if (done) break;
-
-    buffer += decoder.decode(value, { stream: true });
-
-    // SSE messages end with double newline
-    const parts = buffer.split("\n\n");
-    buffer = parts.pop() || "";
-
-    for (const part of parts) {
-      if (!part.startsWith("data:")) continue;
-
-      const jsonStr = part.replace("data:", "").trim();
-
+    es.addEventListener("block", (event) => {
       try {
-        const parsed = JSON.parse(jsonStr);
-        const block = neardata_block_response_interface_z_const.parse(parsed);
+        const json: unknown = JSON.parse(event.data);
+
+        // Validate with Zod schema
+        const validated = neardata_block_response_interface_z_const.parse(json);
+
         console.log("===========================================");
-        console.log("✓ Validation successful!");
-        console.log(`  Block height: ${block.block.header.height}`);
-        console.log(`  Author: ${block.block.author}`);
-        console.log(`  Hash: ${block.block.header.hash}`);
-        console.log(`  Shards: ${block.shards.length}`);
+        console.log(`✓ Block #${validated.block.header.height}`);
+        console.log(`  Author: ${validated.block.author}`);
+        console.log(`  Hash: ${validated.block.header.hash}`);
+        console.log(`  Prev: ${validated.block.header.prev_hash}`);
+        console.log(`  Timestamp: ${validated.block.header.timestamp}`);
+        console.log(`  Shards: ${validated.shards.length}`);
         console.log("===========================================");
       } catch (err) {
-        console.error("❌ Invalid block message:", err);
+        console.error("✗ Validation failed:");
+        console.error(err);
+        console.log("\n=== RAW DATA ===");
+        console.log(event.data);
       }
-    }
-  }
-}
-// ===========================================
-if (import.meta.main) {
-  streamBlocks().catch((err) => {
-    console.error("Stream error:", err);
+    });
+
+    es.addEventListener("ping", () => {
+      console.log("♥ Ping received");
+    });
+
+    es.onerror = (err) => {
+      console.error(`✗ Connection error: ${err}`);
+      es.close();
+      reject(err);
+    };
+
+    es.onopen = () => {
+      console.log("✓ Connected to stream");
+    };
   });
 }
+
+// ===========================================
+await stream_blocks();
