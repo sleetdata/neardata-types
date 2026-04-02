@@ -16,17 +16,17 @@ async function validate_final_block() {
   // Validate and parse
   const validated = neardata_block_response_interface_z_const.parse(json);
 
-  // Write to final.json
-  const output = {
-    validation_status: "success",
-    block_height: validated.block.header.height,
-    author: validated.block.author,
-    hash: validated.block.header.hash,
-    shards_count: validated.shards.length,
-    raw_data: json,
-  };
+  // Console log details
+  console.log("===========================================");
+  console.log("✓ Validation successful!");
+  console.log(`  Block height: ${validated.block.header.height}`);
+  console.log(`  Author: ${validated.block.author}`);
+  console.log(`  Hash: ${validated.block.header.hash}`);
+  console.log(`  Shards: ${validated.shards.length}`);
+  console.log("===========================================");
 
-  await Bun.write(FINAL_JSON_PATH, JSON.stringify(output, null, 2));
+  // Write raw fetched block to JSON file
+  await Bun.write(FINAL_JSON_PATH, JSON.stringify(json, null, 2));
 
   return validated;
 }

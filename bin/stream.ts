@@ -37,7 +37,14 @@ async function stream_blocks(): Promise<void> {
         // Validate with Zod schema
         const validated = neardata_block_response_interface_z_const.parse(json);
 
-        // Silent success - no console output
+        console.log("===========================================");
+        console.log(`✓ Block #${validated.block.header.height}`);
+        console.log(`  Author: ${validated.block.author}`);
+        console.log(`  Hash: ${validated.block.header.hash}`);
+        console.log(`  Prev: ${validated.block.header.prev_hash}`);
+        console.log(`  Timestamp: ${validated.block.header.timestamp}`);
+        console.log(`  Shards: ${validated.shards.length}`);
+        console.log("===========================================");
       } catch (err) {
         await log_error(err, "block_validation");
         // Continue running - don't reject or close
@@ -45,7 +52,7 @@ async function stream_blocks(): Promise<void> {
     });
 
     es.addEventListener("ping", () => {
-      // Silent ping
+      console.log("♥ Ping");
     });
 
     es.onerror = async (err) => {
@@ -54,7 +61,7 @@ async function stream_blocks(): Promise<void> {
     };
 
     es.onopen = () => {
-      // Silent open
+      console.log("✓ Connected to stream");
     };
   });
 }
