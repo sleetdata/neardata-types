@@ -1,7 +1,10 @@
 import { neardata_block_response_interface_z_const } from "../src/index";
+
 // ===========================================
 const NEARDATA_URL = "https://mainnet.neardata.xyz/v0/last_block/final";
+const FINAL_JSON_PATH = "./tmp/final.json";
 // ===========================================
+
 async function validate_final_block() {
   const res = await fetch(NEARDATA_URL);
   if (!res.ok) {
@@ -13,19 +16,20 @@ async function validate_final_block() {
   // Validate and parse
   const validated = neardata_block_response_interface_z_const.parse(json);
 
-  console.log("===========================================");
-  console.log("✓ Validation successful!");
-  console.log(`  Block height: ${validated.block.header.height}`);
-  console.log(`  Author: ${validated.block.author}`);
-  console.log(`  Hash: ${validated.block.header.hash}`);
-  console.log(`  Shards: ${validated.shards.length}`);
-  console.log("===========================================");
+  // Write to final.json
+  const output = {
+    validation_status: "success",
+    block_height: validated.block.header.height,
+    author: validated.block.author,
+    hash: validated.block.header.hash,
+    shards_count: validated.shards.length,
+    raw_data: json,
+  };
 
-  // Output JSON for type analysis
-  console.log("\n=== RAW JSON FOR TYPE ANALYSIS ===");
-  console.log(JSON.stringify(json, null, 2));
+  await Bun.write(FINAL_JSON_PATH, JSON.stringify(output, null, 2));
 
   return validated;
 }
+
 // ===========================================
 await validate_final_block();
