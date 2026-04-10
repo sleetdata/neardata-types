@@ -2,6 +2,12 @@
   "name": "@sleet-js/neardata-types",
   "description": "types for neardata",
   "version": "0.0.2",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sleetdata/neardata-types"
+  },
+  "homepage": "https://sleet-js.near.page",
+  "license": "MIT",
   "main": "./dist/index.js",
   "module": "./src/index.ts",
   "types": "./dist/index.d.ts",
