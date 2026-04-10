@@ -1,5 +1,5 @@
 {
-  "name": "neardata-types",
+  "name": "@sleet-js/neardata-types",
   "module": "src/index.ts",
   "type": "module",
   "devDependencies": {
