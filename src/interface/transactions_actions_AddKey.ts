@@ -8,7 +8,7 @@ export interface neardata_add_key_action_interface {
     permission:
       | string
       | {
-          permission_kind: string;
+          permission_kind?: string;
           allowance?: string;
           receiver_id?: string;
           method_names?: string[];

@@ -11,7 +11,7 @@ export const neardata_add_key_action_interface_z_const = z.object({
     permission: z.union([
       z.string(),
       z.object({
-        permission_kind: z.string(),
+        permission_kind: z.string().optional(),
         allowance: z.string().optional(),
         receiver_id: z.string().optional(),
         method_names: z.array(z.string()).optional(),
