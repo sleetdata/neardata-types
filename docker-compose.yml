@@ -1,0 +1,8 @@
+services:
+  stream:
+    build: .
+    environment:
+      - NEAR_STREAM_URL=${NEAR_STREAM_URL:-http://localhost:8080}
+    volumes:
+      - ./tmp/errors:/app/tmp/errors
+    restart: unless-stopped
