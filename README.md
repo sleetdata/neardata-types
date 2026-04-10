@@ -20,6 +20,7 @@ bun install
 bun run tsc --noEmit
 bunx prettier . --write
 # publish
+bun run build
 bun publish --dry-run
 bunx npm login
 bun publish --access public
