@@ -9,7 +9,7 @@ import type {
 
 export interface neardata_shard_interface {
   shard_id: number;
-  chunk: neardata_shard_chunk_interface;
+  chunk: neardata_shard_chunk_interface | null;
   receipt_execution_outcomes: neardata_receipt_execution_outcome_interface[];
   state_changes: neardata_state_change_interface[];
 }

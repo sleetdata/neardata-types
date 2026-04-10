@@ -15,7 +15,7 @@ import {
 
 export const neardata_shard_interface_z_const = z.object({
   shard_id: z.number(),
-  chunk: z.lazy(() => neardata_shard_chunk_interface_z_const),
+  chunk: z.lazy(() => neardata_shard_chunk_interface_z_const).nullable(),
   receipt_execution_outcomes: z.array(
     neardata_receipt_execution_outcome_interface_z_const,
   ),
